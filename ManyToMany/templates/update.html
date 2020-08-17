@@ -1,0 +1,26 @@
+
+<html>
+    <body>
+        <form action="{% url 'updatesave' %}" method="post">
+            {% csrf_token %}
+{#            {% for x in data %}#}
+            <table border="2" align="center">
+                <tr><th colspan="2">
+                    <h1>Update Subject</h1>
+                </th></tr>
+            <tr>
+                <th>Classid</th>
+                <th ><input type="number" value="{{ data.classid }}" name="cid" readonly></th>
+            </tr>
+                <tr>
+                <th>Subject Name</th>
+                <th><input type="text" value="{{ data.subject }}" name="subject"></th>
+            </tr>
+                <tr>
+                <th colspan="2"><button type="submit">update</button> </th>
+            </tr>
+{#            {% endfor %}#}
+            </table>
+        </form>
+    </body>
+</html>

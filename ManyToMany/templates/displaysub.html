@@ -1,0 +1,23 @@
+{% load static %}
+<html>
+    <body>
+        <table align="center" border="2">
+            <tr style="background-color: cornflowerblue">
+                <th>ClassID</th>
+                <th>Subject Name</th>
+                <th>Delete</th>
+                <th>Update</th>
+            </tr>
+            {% for x in data %}
+                <tr>
+                <th>{{ x.classid }}</th>
+                <th>{{ x.subject }}</th>
+                <th><a href="{% url 'deletesub' %}?subj={{ x.classid }}"><img src="{% static 'img/cancel.png'  %}" width="50"> </a> </th>
+                <th><a href="{% url 'updatesub' %}?id={{ x.classid }}">Update </a> </th>
+                </tr>
+            {% endfor %}
+        <tr><th colspan="2"><a href="{% url 'homepage' %}"><img src="{% static 'img/home.png' %}" width="30">  </a> </th>
+            <th colspan="2"><a href="{% url 'addsub' %}">Add Subject</a></th></tr>
+        </table>
+    </body>
+</html>

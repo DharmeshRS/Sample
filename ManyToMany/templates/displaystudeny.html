@@ -1,0 +1,41 @@
+{% load static %}
+<html>
+    <body>
+        <table align="center" border="1">
+            <tr>
+                <th>StudentID</th>
+                <th>Student Name</th>
+                <th>Contact No</th>
+                <th>CourseID</th>
+                <th>Course Name</th>
+                <th>Delete</th>
+            </tr>
+            {% for x in data %}
+                <tr>
+                    <th>{{ x.studentid }}</th>
+                    <th>{{ x.name }}</th>
+                    <th>{{ x.contact }}</th>
+                    <th>{{ x.studentid }}</th>
+                <th>
+                     {% for y in x.subject.values  %}
+                     {{ y.subject }}<br>
+                        {% endfor %}
+                </th>
+                <th>
+                    <a href="{% url 'delete' %}?stno={{ x.studentid }}"><img src="{% static 'img/cancel.png'  %}" width="30" ></a>
+                </th>
+                </tr>
+            {% endfor %}
+        {% if messages %}
+            {% for x in messages %}
+        <tr>
+            <th colspan="6">{{ x }}</th>
+        </tr>
+            {% endfor %}
+        {% endif %}
+        <tr><th colspan="3"><a href="{% url 'homepage' %}"><img src="{% static 'img/home.png' %}" width="30">  </a> </th>
+            <th colspan="3"><a href="{% url 'addstudent' %}">Add Subject</a></th></tr>
+
+        </table>
+    </body>
+</html>
